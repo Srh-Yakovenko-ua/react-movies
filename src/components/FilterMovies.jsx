@@ -1,54 +1,59 @@
 import React from 'react';
 
-class FilterMovies extends React.Component {
+const FilterMovies = (props) => {
+    const {
+        type,
+        handleFilterType
+    } = props
 
-
-    handleFilterType = (type) => {
-        this.props.handleFilterType(type)
+    const onChangeHandleFilterType = (type) => {
+        handleFilterType(type)
     }
 
-    render() {
-        const {type} = this.props
 
-        return (
-            <div style={{display: 'flex', justifyContent: 'space-around'}}>
-                <p>
-                    <label>
-                        <input className="with-gap"
-                               name="type"
-                               type="radio"
-                               onChange={() => this.handleFilterType('all')}
-                               checked={type === 'all'}
-                        />
-                        <span>All</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input className="with-gap"
-                               name="type"
-                               type="radio"
-                               onChange={() => this.handleFilterType('movie')}
-                               checked={type === 'movie'}
-                        />
-                        <span>Movies Only</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input className="with-gap"
-                               name="type"
-                               type="radio"
-                               onChange={() => this.handleFilterType('series')}
-                               checked={type === 'series'}
-                        />
-                        <span>Series Only</span>
-                    </label>
-                </p>
+    return (
+        <div style={{display: 'flex', justifyContent: 'space-around'}}>
+            <p>
+                <label>
+                    <input className="with-gap"
+                           name="type"
+                           type="radio"
+                           onChange={onChangeHandleFilterType}
+                           data-type={'all'}
+                           checked={type === 'all'}
+                    />
+                    <span>All</span>
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input className="with-gap"
+                           name="type"
+                           type="radio"
+                           onChange={onChangeHandleFilterType}
+                           data-type={'movie'}
+                           checked={type === 'movie'}
+                    />
+                    <span>Movies Only</span>
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input className="with-gap"
+                           name="type"
+                           type="radio"
+                           onChange={onChangeHandleFilterType}
+                           data-type={'series'}
+                           checked={type === 'series'}
+                    />
+                    <span>Series Only</span>
+                </label>
+            </p>
 
-            </div>
-        );
-    }
+        </div>
+    );
+
 }
+
 
 export {FilterMovies};
